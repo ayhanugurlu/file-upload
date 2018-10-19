@@ -19,6 +19,8 @@ import java.io.InputStream;
 import java.io.PrintWriter;
 
 /**
+ * File upload Servlet example
+ *
  * Created by Ayhan.Ugurlu on 18/10/2018
  */
 @WebServlet(
