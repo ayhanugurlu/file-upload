@@ -1,10 +1,13 @@
 package com.au.example.fileupload.servlet;
 
+import com.au.example.fileupload.service.FileStorageService;
 import org.apache.commons.fileupload.FileItemIterator;
 import org.apache.commons.fileupload.FileItemStream;
 import org.apache.commons.fileupload.FileUploadException;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import org.apache.commons.fileupload.util.Streams;
+import org.springframework.web.context.WebApplicationContext;
+import org.springframework.web.context.support.WebApplicationContextUtils;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -36,6 +39,14 @@ public class FileUploadServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+
+
+        WebApplicationContext ctx =
+                WebApplicationContextUtils
+                        .getWebApplicationContext(getServletContext());
+        FileStorageService fileStorageService = ctx.getBean("fileStorageService", FileStorageService.class);
+
 
         System.out.println("test");
         if (ServletFileUpload.isMultipartContent(request)) {
